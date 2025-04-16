@@ -1,22 +1,20 @@
 import { useState, useEffect } from "react";
 import { User } from '../interfaces/types';
+import { api } from '../utils/api.ts';
 
 function App() {
   const [users, setUsers] = useState<User[]>([]);
-  const [name, setName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch("https://jsonplaceholder.typicode.com/users");
-        const data: User[] = await response.json();
+        const data = await api.getUsers();
         setUsers(data);
       } catch (error) {
-        console.error("Erro ao buscar usuários:", error);
+        console.error(error);
       }
     };
-
+  
     fetchUsers();
   }, []);
 
