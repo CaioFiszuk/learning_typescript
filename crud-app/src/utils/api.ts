@@ -1,14 +1,13 @@
-import axios, { AxiosRequestHeaders} from 'axios';
-import { User } from '../interfaces/types';
+import axios from 'axios';
 
 interface ApiOptions {
   baseUrl: string;
-  headers: AxiosRequestHeaders;
+  headers: Record<string, string>;
 }
 
 class Api {
   private baseURL: string;
-  private headers: AxiosRequestHeaders;
+  private headers: Record<string, string>;
 
   constructor(options: ApiOptions) {
     this.baseURL = options.baseUrl;
