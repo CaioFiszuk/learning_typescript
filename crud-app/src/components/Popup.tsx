@@ -2,7 +2,13 @@ import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
 
-function Popup({ isOpen, onClose, children }) {
+interface PopupProps {
+  isOpen: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
+}
+
+function Popup({ isOpen, onClose, children }: PopupProps) {
   return (
     <Modal
       isOpen={isOpen}
